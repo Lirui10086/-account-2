@@ -1,35 +1,36 @@
-# multichain.xyz
-
-
-
 # Deploying your own cross-chain token 101
 
 ## Prerequisites
 
 * Token & Logo data available on [coingecko.com](https://www.coingecko.com/en)
 
-## Step 1: Fork AnyswapV4ERC20 and implement any additional functionality as required.
+## Step 1: Fork AnyswapV6ERC20 and implement any additional functionality as required.
 
-AnyswapV4ERC20 supports the following
+```
+git clone https://github.com/anyswap/chaindata.git
+```
+
+AnyswapV6ERC20 supports the following
 * ERC2612 (Adds `permit`)
 * ERC677 (Adds `approveAndCall` and `transferAndCall`)
 * `transferWithPermit`
 * Verify EIP712 and Verify `personalSign`
-* AnyswapV4ERC20 needs to support `mint`, `burn`, `Swapin`, and `Swapout` to be compatible with multiple bridges.
+* AnyswapV6ERC20 needs to support `mint`, `burn`, `Swapin`, and `Swapout` to be compatible with multiple bridges.
 * Multichain MPC address (detailed below) should be set via `initVault(address _vault)`
+
 
 ### Step 1.1: I already deployed my token
 
 Deploy a wrapper for your token that supports `mint`, `burn`, `Swapin`, and `Swapout`, add this wrapper as a minter role in the ACL. In the wrapper add the MPC address (found below) as a minter
 
-## Step 2: Deploy AnyswapV4ERC20 via AnyswapCREATE2
+## Step 2: Deploy AnyswapV6ERC20 via AnyswapCREATE2
 
 AnyswapCREATE2 is available on Ethereum, Fantom, Binance Smart Chain, xDAI, and Matic. More deployments to follow
 
 Address: 0x54f5a04417e29ff5d7141a6d33cb286f50d5d50e
 
 ```
-git clone https://github.com/connext/chaindata.git
+git clone https://github.com/anyswap/chaindata.git
 npm install
 -- edit deploy.js
 node deploy.js
@@ -62,7 +63,7 @@ Verify via;
 
 ## Step 4: Create a PR for your token into the token registry
 
-Clone the connext/chaindata repo and submit a PR to chains.json with the following format;
+Clone the https://github.com/anyswap/chaindata.git repo and submit a PR to chains.json with the following format;
 
 ```json
 "yfi": {
@@ -110,4 +111,4 @@ Clone the connext/chaindata repo and submit a PR to chains.json with the followi
 ```
 
 If you are not sure on the chainID, you can confirm them on [chainid.network](https://chainid.network/chains.json)
-Once the PR is accepted, the token will be merged and become available on [multichain.xyz](https://multichain.xyz/)
+Once the PR is accepted, the token will be merged and become available on [multichain.org](https://multichain.org/)
